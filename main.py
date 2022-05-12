@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+import matplotlib as plt
 # print(b.shape)  # Wyswietlanie ksztaltu macierzy
 # print(b.dtype)  #'Pokazuje ilu bitowa jest macierz'
 #
