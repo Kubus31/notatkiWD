@@ -177,7 +177,164 @@ import matplotlib as plt
 # print(plik[[1,2]])
 
 ##################PANDAS#############
-#Series
+#tworzenie serii danych(series)
 
-s = pd.Series([1, 2, 5, np.nan, 6, 8])
-print(s)
+# s = pd.Series([1, 2, 5, np.nan, 6, 8])
+# print(s)
+# s = pd.Series([10, 12, 8, 14], index=['Ala', 'Marek',
+# 'Wiesiek', 'Elonora'])
+# print(s)
+
+#Tworzenie DataFrame na podstawie slownika
+
+# data = {'Kraj' : ['Belgia','Indie', 'Brazylia', ],
+#         'Stolica' : ['Bruksela', 'New Delphi', "Brasilia"],
+#         'Populacja' : [11190846, 1303171035, 207847528]}
+#
+# df = pd.DataFrame(data)
+# # print(df)
+# #Dataframe przechowuje typ dla kazdej kolumny co mozemy
+# #sprawdzic wypisując:
+# print(df.dtypes)
+#
+# #tworzenie w prosty sposob serii danych - czyli probki dlakolejnych
+# daty = pd.date_range('20210324', periods=5)
+# # print(daty)
+# df = pd.DataFrame(np.random.randn(5, 4), index = daty,
+# columns=list('ABCD'))
+# # print(df)
+
+#uzywanie danych z zwenetrzych zrodel(CSV- odczyt zapis)
+# df = pd.read_csv('dane.csv', header=0, sep=';', decimal=',')
+# print(df)
+# df.to_csv('plik.csv', index=False)
+#
+# ##EXCEL
+#
+# xlsx = pd.ExcelFile('imiona.xlsx')
+# df = pd.read_excel(xlsx, header=0)
+# print(df)
+# df.to_excel('wyniki.xlsx', sheet_name='arkusz pierwszy')
+
+###POBIERANIE STRUKTUR DANYCH###
+# s = pd.Series([10, 12, 8, 14], index=['Ala', 'Marek', 'Wiesiek', 'Elonoora'])
+# print(s)
+#
+# data = {'Kraj' : ['Belgia','Indie', 'Brazylia', ],
+#        'Stolica' : ['Bruksela', 'New Delphi', "Brasilia"],
+#        'Populacja' : [11190846, 1303171035, 207847528]}
+#
+# df = pd.DataFrame(data)
+# print(df)
+#
+# #pojedyncze odnoszenie sie do elementu
+# #za pomoca indeksu
+# print(s['Wiesiek'])
+# #Lub poprzez wartosc serii jak do pola klasy
+# print(s.Wiesiek)
+# #...lub jak przy cieciu tablic tylko oparte na indeksach
+# print(df[0:1])
+# print("")
+# #kolumny po  etykiecie
+# print(df['Populacja'])
+#
+# #pobieranie pojedynczej wartosci po indeksie wiersza i kolumny
+# print(df.iloc[[0], [0]])
+#
+# #pobieranie wartosci po indeksie wiersza i etykiecie kolumny
+# print(df.loc[[0],["Kraj"]])
+# print(df.at[0,"Kraj"])
+
+#podobnie jak w przypadku serii mozna odwolac sie do kolumn
+#jak do poll klasy
+#dodatkowo print jest wywolywany jak w petli dla kazdego
+#elementu danej do olumny
+# print('Kraj: ' + df.Kraj)
+#Pandas posiada rowniez funkcje pozwalajace na losowe pobieranie elementow
+#lub w odniesieniu do procentowej wielkosci calego zbioru
+
+#jeden losowy element
+# print(df.sample())
+# n losowych elementow
+# print(df.sample(2))
+#ilosc elementow procentowo, uwaga na zaokroglenie
+# print(df.sample(frac=0.5))
+
+#jezeli potrzeba nam wiecej probek niz znajduje sie w zbiorze
+# mozemy dopuscid duplikaty
+# print(df.sample(n = 10, replace=True))
+
+#zamiast wyswietlac calp kolekcje mozemy wyswietlic
+# okreslona ilosc elemetow od poczatku lub konca
+# print(df.head())
+# print(df.head(2))
+# print(df.tail(1))
+
+##STATYSTYKA PANDAS
+# print(df.describe())
+# #transpozycja to zmienna T kolekcji, podobnie jak w numpy
+# print(df.T)
+
+####filtrowanie, grupowanie, agregacja danych
+
+s = pd.Series([10, 12, 8, 14], index=['Ala', 'Marek', 'Wiesiek', 'Elonoora'])
+# print(s)
+
+data = {'Kraj' : ['Belgia','Indie', 'Brazylia', ],
+       'Stolica' : ['Bruksela', 'New Delphi', "Brasilia"],
+       'Populacja' : [11190846, 1303171035, 207847528]}
+
+df = pd.DataFrame(data)
+
+#wyswietlanie danych serii w zaleznosci od wartosci
+print(s[s>9])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
