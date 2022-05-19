@@ -35,7 +35,25 @@ import matplotlib as plt
 # #otrzymywanie konkretnego wiersza
 # print(a[0, :])
 # print(a[0, 1:6:2])
-#
+
+# wektor po przekątnej 5x5, wartość k zmienia wektor tworząc przy tym nowy wiersz
+# f = np.diag([x for x in range(5)],k=-1)
+# print(f)
+
+# # wartość po kolumnach
+# b, c = np.indices((5, 5))
+# print(b[0][1])
+# print(b)
+# print(c)
+
+# g=np.fromiter(range(5), dtype='int')
+# print(g)
+
+# marcin = 'Marcin'
+# marcin = b'Marcin'
+# mar = np.frombuffer(marcin, dtype='S6')
+# print(mar)
+
 # #podmiana istniejacej wartosci
 # #np 2wiersz 3kolumna
 # a[1, 2] = 20
@@ -157,3 +175,9 @@ import matplotlib as plt
 # print(plik > 5)
 # print(plik[plik > 5])
 # print(plik[[1,2]])
+
+##################PANDAS#############
+#Series
+
+s = pd.Series([1, 2, 5, np.nan, 6, 8])
+print(s)
