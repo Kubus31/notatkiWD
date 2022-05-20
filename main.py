@@ -288,33 +288,75 @@ df = pd.DataFrame(data)
 
 #wyswietlanie danych serii w zaleznosci od wartosci
 print(s[s>9])
+#lub
+print(s.where(s>10))
+#mozemy rownierz podmieniac wartosci
+print(s.where(s>10, 'za duze'))
+#mozemy podmienic wartosc w oryginale(domyslnie zwracana jest kopia)
+seria = s.copy()
+seria.where(seria > 10, 'za duze', inplace=True)
+print(seria)
 
+#wyswietlanie wartosci mniejszych np. od 10
+print(s[~(s>10)])
+# mozemy rowniez loczyc warunki
+print(s[(s<13)& (s>8)])
 
+##warunki dla pobieranie data frame
+print(df[df['Populacja']>1200000000])
+# bardziej skomplikowane warunki
+print(df[(df.Populacja)>1000000 & (df.index.isin([0,2]))])
+# inny prsyklad z lista dopuszczalnych wartosci oraz isin
+#zwacajaca wartosci boolowskie
+print('#########')
+szukaj = ['Belgia','Brasilia']
+print(df.isin(szukaj))
 
+## zmiana, usuwanie i dodawanie danych
 
+#w prypadku serii mozemy dodac/zmienic wartosc poprzez odwolanie sie
+#do elementu serii przez klucz (index)
 
+s['Wiesiek'] = 15
+print(s.Wiesiek)
+s['Alan'] = 16
+print(s)
 
+#podobna operacja dla Data frame ma nieco inny efekt- wartosc
+#ustawiona dla wszystkichh kolumn
+df.loc[3] = 'dodane'
+print(df)
+#ale mcana dodac wiersz w postaci licty
+df.loc[4] = ['Polska','Warszawa', 38675467]
+print(df)
 
+#usuwanie danych moza wykonywac przez funkcje drop, alepamietajmy
+# ze operacja nie wykonuje sie in-place wiec
+#zwracana jest kopia DataFramr z usunietymi  wartosciami
 
+new_df = df.drop([3])
+print(new_df)
+#aby zmienic oryginal nalezy dodac inplace
+df.drop([3], inplace=True)
+print(df)
+#moza usuwac cale kolumny po nazwie indeksu ale wykonanie trj czynnosci
+#uniemozliwi dalsze wykonywanie kodu
+#df.drop('Kraj',axis=1, inplace=True)
 
+#do DataFrame mozemy dodawac rowniez kolumny zamiast wierszy
+df['Kontynent']= ['Europa', 'Azja', 'Ameryka Poludniowa', 'Europa']
+print(df)
 
+#Pandas ma rowniez wlasne funkcje sortowania danych
+print(df.sort_values(by='Kraj'))
 
+#grupowania
+grouped = df.groupby(['Kontynent'])
+print(grouped.get_group('Europa'))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# mozna tez jak w SQL czy Excelu uruchomic funkcje agregujace na danej kolumnie
+print("###")
+print(df.groupby(['Kontynent']).agg({'Populacja':['sum']}))
 
 
 
