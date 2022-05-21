@@ -177,6 +177,7 @@ import matplotlib.pyplot as plt
 # print(plik[[1,2]])
 
 ##################PANDAS#############
+
 #tworzenie serii danych(series)
 
 # s = pd.Series([1, 2, 5, np.nan, 6, 8])
@@ -192,14 +193,16 @@ import matplotlib.pyplot as plt
 #         'Populacja' : [11190846, 1303171035, 207847528]}
 #
 # df = pd.DataFrame(data)
-# # print(df)
-# #Dataframe przechowuje typ dla kazdej kolumny co mozemy
-# #sprawdzic wypisując:
+# print(df)
+#
+#
+# Sprawdzanie typów danych w DataFrame
+#
 # print(df.dtypes)
 #
-# #tworzenie w prosty sposob serii danych - czyli probki dlakolejnych
+# #tworzenie w prosty sposob serii danych - czyli ptóbek
 # daty = pd.date_range('20210324', periods=5)
-# # print(daty)
+#  print(daty)
 # df = pd.DataFrame(np.random.randn(5, 4), index = daty,
 # columns=list('ABCD'))
 # # print(df)
@@ -207,7 +210,7 @@ import matplotlib.pyplot as plt
 #uzywanie danych z zwenetrzych zrodel(CSV- odczyt zapis)
 # df = pd.read_csv('dane.csv', header=0, sep=';', decimal=',')
 # print(df)
-# df.to_csv('plik.csv', index=False)
+# df.to_csv('plik.csv', index=False) #zapis
 #
 # ##EXCEL
 #
