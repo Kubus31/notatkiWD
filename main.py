@@ -146,40 +146,36 @@ import matplotlib.pyplot as plt
 # print('max wiersz: ',np.max(matrix, axis=0))
 # print('sum kolumna: ', np.sum(matrix, axis=1))
 
-# przeksztalcanie macierzy
+### przeksztalcanie macierzy
 
 # przed = np.array([[1,2,3,4],[5,6,7,8]])
 # print('przed\n ', przed)
+
 # po = przed.reshape((4,2))
 # print('po\n ', po)
 #
-# #wektory ukladajace sie pionowo
+# pionowe ustawienie wektorów
 #
 # v1 = np.array([1,2,3,4])
 # v2 = np.array([5,6,7,8])
-#
 # print(np.vstack([v1,v2,v1,v2]))
 # print(np.vstack([v1,v1,v2,v2]))
 #
-# #stos poziomy
+##### stos poziomy
 # h1 = np.ones((2,4))
 # h2 = np.zeros((2,2))
 # print(np.hstack([h1,h2]))
 
 #ladowaniedanych z pliku txt
 # plik = np.genfromtxt('data.txt', delimiter=',')
-# print(plik)
-#
-# #############33 zaawansowane indeksowanie i boolean masking
-#
+# print(plik)#
 # print(plik > 5)
 # print(plik[plik > 5])
 # print(plik[[1,2]])
 
 ##################PANDAS#############
 
-#tworzenie serii danych(series)
-
+##tworzenie serii danych(series)
 # s = pd.Series([1, 2, 5, np.nan, 6, 8])
 # print(s)
 # s = pd.Series([10, 12, 8, 14], index=['Ala', 'Marek',
@@ -187,22 +183,19 @@ import matplotlib.pyplot as plt
 # print(s)
 
 #Tworzenie DataFrame na podstawie slownika
-
 # data = {'Kraj' : ['Belgia','Indie', 'Brazylia', ],
 #         'Stolica' : ['Bruksela', 'New Delphi', "Brasilia"],
 #         'Populacja' : [11190846, 1303171035, 207847528]}
-#
+
 # df = pd.DataFrame(data)
 # print(df)
-#
-#
+
 # Sprawdzanie typów danych w DataFrame
-#
 # print(df.dtypes)
-#
-# #tworzenie w prosty sposob serii danych - czyli ptóbek
+
+##TWORZENIE W PROSTY SPOSÓB SERII DANYCH - czyli ptóbek
 # daty = pd.date_range('20210324', periods=5)
-#  print(daty)
+# print(daty)
 # df = pd.DataFrame(np.random.randn(5, 4), index = daty,
 # columns=list('ABCD'))
 # # print(df)
@@ -211,9 +204,8 @@ import matplotlib.pyplot as plt
 # df = pd.read_csv('dane.csv', header=0, sep=';', decimal=',')
 # print(df)
 # df.to_csv('plik.csv', index=False) #zapis
-#
-# ##EXCEL
-#
+
+###EXCEL
 # xlsx = pd.ExcelFile('imiona.xlsx')
 # df = pd.read_excel(xlsx, header=0)
 # print(df)
@@ -222,29 +214,31 @@ import matplotlib.pyplot as plt
 ###POBIERANIE STRUKTUR DANYCH###
 # s = pd.Series([10, 12, 8, 14], index=['Ala', 'Marek', 'Wiesiek', 'Elonoora'])
 # print(s)
-#
 # data = {'Kraj' : ['Belgia','Indie', 'Brazylia', ],
 #        'Stolica' : ['Bruksela', 'New Delphi', "Brasilia"],
 #        'Populacja' : [11190846, 1303171035, 207847528]}
-#
+
 # df = pd.DataFrame(data)
 # print(df)
-#
-# #pojedyncze odnoszenie sie do elementu
-# #za pomoca indeksu
+
+#PIJEDYNCZE ODNOSZENIE SIE DO ELEMENTU
+#ZA POMOCĄ INDEKSU
 # print(s['Wiesiek'])
-# #Lub poprzez wartosc serii jak do pola klasy
+
+# LUB POPRZEZ WARTOSĆ SERII
 # print(s.Wiesiek)
-# #...lub jak przy cieciu tablic tylko oparte na indeksach
+
+# ...lub jak przy cieciu tablic tylko oparte na indeksach
 # print(df[0:1])
 # print("")
-# #kolumny po  etykiecie
+
+# WYSWIETLANIE KOLUMNY PO ETYKIECIE
 # print(df['Populacja'])
-#
-# #pobieranie pojedynczej wartosci po indeksie wiersza i kolumny
+
+# pobieranie pojedynczej wartosci po indeksie wiersza i kolumny
 # print(df.iloc[[0], [0]])
-#
-# #pobieranie wartosci po indeksie wiersza i etykiecie kolumny
+
+# pobieranie wartosci po indeksie wiersza i etykiecie kolumny
 # print(df.loc[[0],["Kraj"]])
 # print(df.at[0,"Kraj"])
 
@@ -253,21 +247,26 @@ import matplotlib.pyplot as plt
 #dodatkowo print jest wywolywany jak w petli dla kazdego
 #elementu danej do olumny
 # print('Kraj: ' + df.Kraj)
+
+
+
 #Pandas posiada rowniez funkcje pozwalajace na losowe pobieranie elementow
 #lub w odniesieniu do procentowej wielkosci calego zbioru
 
 #jeden losowy element
 # print(df.sample())
+
 # n losowych elementow
 # print(df.sample(2))
+
 #ilosc elementow procentowo, uwaga na zaokroglenie
 # print(df.sample(frac=0.5))
 
 #jezeli potrzeba nam wiecej probek niz znajduje sie w zbiorze
-# mozemy dopuscid duplikaty
+# mozemy dopuscić duplikaty
 # print(df.sample(n = 10, replace=True))
 
-#zamiast wyswietlac calp kolekcje mozemy wyswietlic
+#zamiast wyswietlac cale kolekcje mozemy wyswietlic
 # okreslona ilosc elemetow od poczatku lub konca
 # print(df.head())
 # print(df.head(2))
@@ -291,24 +290,31 @@ import matplotlib.pyplot as plt
 #
 # #wyswietlanie danych serii w zaleznosci od wartosci
 # print(s[s>9])
+
 # #lub
 # print(s.where(s>10))
+
 # #mozemy rownierz podmieniac wartosci
 # print(s.where(s>10, 'za duze'))
+
 # #mozemy podmienic wartosc w oryginale(domyslnie zwracana jest kopia)
 # seria = s.copy()
 # seria.where(seria > 10, 'za duze', inplace=True)
 # print(seria)
 #
 # #wyswietlanie wartosci mniejszych np. od 10
+
 # print(s[~(s>10)])
+
 # # mozemy rowniez loczyc warunki
 # print(s[(s<13)& (s>8)])
 #
-# ##warunki dla pobieranie data frame
-# print(df[df['Populacja']>1200000000])
+### warunki dla pobieranie data frame
+#   print(df[df['Populacja']>1200000000])
+
 # # bardziej skomplikowane warunki
 # print(df[(df.Populacja)>1000000 & (df.index.isin([0,2]))])
+
 # # inny prsyklad z lista dopuszczalnych wartosci oraz isin
 # #zwacajaca wartosci boolowskie
 # print('#########')
@@ -317,8 +323,8 @@ import matplotlib.pyplot as plt
 #
 # ## zmiana, usuwanie i dodawanie danych
 #
-# #w prypadku serii mozemy dodac/zmienic wartosc poprzez odwolanie sie
-# #do elementu serii przez klucz (index)
+# # w prypadku serii mozemy dodac/zmienic wartosc poprzez odwolanie sie
+# # do elementu serii przez klucz (index)
 #
 # s['Wiesiek'] = 15
 # print(s.Wiesiek)
@@ -336,12 +342,13 @@ import matplotlib.pyplot as plt
 #usuwanie danych moza wykonywac przez funkcje drop, alepamietajmy
 # ze operacja nie wykonuje sie in-place wiec
 #zwracana jest kopia DataFramr z usunietymi  wartosciami
-
 # new_df = df.drop([3])
 # print(new_df)
+
 # #aby zmienic oryginal nalezy dodac inplace
 # df.drop([3], inplace=True)
 # print(df)
+
 # #moza usuwac cale kolumny po nazwie indeksu ale wykonanie trj czynnosci
 # #uniemozliwi dalsze wykonywanie kodu
 # #df.drop('Kraj',axis=1, inplace=True)
@@ -363,8 +370,8 @@ import matplotlib.pyplot as plt
 
 ###WYKRESY
 ts = pd.Series(np.random.randn(1000))
-#funkcja biblioteki pandas generujaca skumulowana
-#sume kolejnych elementow
+
+#funkcja biblioteki pandas generujaca skumulowana sume kolejnych elementow
 # ts = ts.cumsum()
 # print(ts)
 # ts.plot()
@@ -374,10 +381,9 @@ ts = pd.Series(np.random.randn(1000))
 #         'Stolica' : ['Bruksela', 'New Delphi', "Brasilia",'Warszawa'],
 #         'Kontynent':['Europa','Azja','Ameryka Poludnowa','Europa'],
 #         'Populacja' : [11190846, 1303171035, 207847528,38675467]}
-#
+
 # df = pd.DataFrame(data)
 # print(df)
-#
 # grupa = df.groupby(['Kontynent']).agg({'Populacja':['sum']})
 # print(grupa)
 
@@ -399,7 +405,6 @@ ts = pd.Series(np.random.randn(1000))
 
 ###wczytywanie danych z pliku i wyswietlanie zgrupowanych wartosci
 # df = pd.read_csv('dane.csv', header=0, sep=';', decimal='.')
-#
 # print(df)
 # grupa = df.groupby(['Imię i nazwisko']).agg({'Wartość zamówienia':['sum']})
 
